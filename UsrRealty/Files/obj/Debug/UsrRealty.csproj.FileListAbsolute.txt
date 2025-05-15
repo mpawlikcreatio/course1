@@ -1,0 +1,10 @@
+C:\Projects\SetupDevEnv\TSBpm\Src\Lib\Terrasoft.WebApp.Loader\Terrasoft.WebApp\Terrasoft.Configuration\Pkg\UsrRealty\Files\Bin\UsrRealty.dll
+C:\Projects\SetupDevEnv\TSBpm\Src\Lib\Terrasoft.WebApp.Loader\Terrasoft.WebApp\Terrasoft.Configuration\Pkg\UsrRealty\Files\Bin\UsrRealty.pdb
+C:\Projects\SetupDevEnv\TSBpm\Src\Lib\Terrasoft.WebApp.Loader\Terrasoft.WebApp\Terrasoft.Configuration\Pkg\UsrRealty\Files\obj\Debug\UsrRealty.csproj.AssemblyReference.cache
+C:\Projects\SetupDevEnv\TSBpm\Src\Lib\Terrasoft.WebApp.Loader\Terrasoft.WebApp\Terrasoft.Configuration\Pkg\UsrRealty\Files\obj\Debug\UsrRealty.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\SetupDevEnv\TSBpm\Src\Lib\Terrasoft.WebApp.Loader\Terrasoft.WebApp\Terrasoft.Configuration\Pkg\UsrRealty\Files\obj\Debug\UsrRealty.AssemblyInfoInputs.cache
+C:\Projects\SetupDevEnv\TSBpm\Src\Lib\Terrasoft.WebApp.Loader\Terrasoft.WebApp\Terrasoft.Configuration\Pkg\UsrRealty\Files\obj\Debug\UsrRealty.AssemblyInfo.cs
+C:\Projects\SetupDevEnv\TSBpm\Src\Lib\Terrasoft.WebApp.Loader\Terrasoft.WebApp\Terrasoft.Configuration\Pkg\UsrRealty\Files\obj\Debug\UsrRealty.csproj.CoreCompileInputs.cache
+C:\Projects\SetupDevEnv\TSBpm\Src\Lib\Terrasoft.WebApp.Loader\Terrasoft.WebApp\Terrasoft.Configuration\Pkg\UsrRealty\Files\obj\Debug\UsrRealty.sourcelink.json
+C:\Projects\SetupDevEnv\TSBpm\Src\Lib\Terrasoft.WebApp.Loader\Terrasoft.WebApp\Terrasoft.Configuration\Pkg\UsrRealty\Files\obj\Debug\UsrRealty.dll
+C:\Projects\SetupDevEnv\TSBpm\Src\Lib\Terrasoft.WebApp.Loader\Terrasoft.WebApp\Terrasoft.Configuration\Pkg\UsrRealty\Files\obj\Debug\UsrRealty.pdb
