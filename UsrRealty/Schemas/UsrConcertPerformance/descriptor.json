@@ -1,13 +1,13 @@
 ﻿{
   "Descriptor": {
-    "UId": "22f0b6b4-67cf-4e98-af94-43f3b7e5a95f",
-    "Name": "UsrConcerts",
-    "ModifiedOnUtc": "\/Date(1747400099000)\/",
+    "UId": "4e3eb0cc-e86d-4ff9-a462-3db358aa747d",
+    "Name": "UsrConcertPerformance",
+    "ModifiedOnUtc": "\/Date(1747403119000)\/",
     "Parent": {
       "UId": "1bab9dcf-17d5-49f8-9536-8e0064f1dce0",
       "Name": "BaseEntity"
     },
     "ManagerName": "EntitySchemaManager",
-    "Caption": "Concerts"
+    "Caption": "Concert Performance"
   }
 }
