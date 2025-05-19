@@ -227,7 +227,7 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 					"clicked": {
 						"request": "crt.RunBusinessProcessRequest",
 						"params": {
-							"processName": "UsrAddPerformances",
+							"processName": "UsrAddPerformancesUsrRealty1",
 							"processRunType": "ForTheSelectedPage",
 							"saveAtProcessStart": true,
 							"showNotification": true,
@@ -506,16 +506,16 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 					"primaryColumnName": "GridDetail_3067jy8DS_Id",
 					"columns": [
 						{
-							"id": "22c5545a-5878-f7e9-d306-278474035359",
-							"code": "GridDetail_3067jy8DS_UsrPerformanceName",
-							"caption": "#ResourceString(GridDetail_3067jy8DS_UsrPerformanceName)#",
-							"dataValueType": 28
-						},
-						{
 							"id": "8fed0005-0639-d78e-f758-70985fd40a2a",
 							"code": "GridDetail_3067jy8DS_UsrPerformanceNumber",
 							"caption": "#ResourceString(GridDetail_3067jy8DS_UsrPerformanceNumber)#",
 							"dataValueType": 4
+						},
+						{
+							"id": "22c5545a-5878-f7e9-d306-278474035359",
+							"code": "GridDetail_3067jy8DS_UsrPerformanceName",
+							"caption": "#ResourceString(GridDetail_3067jy8DS_UsrPerformanceName)#",
+							"dataValueType": 28
 						},
 						{
 							"id": "7ded9751-4746-5366-e1b8-9b3326732ed0",
@@ -662,22 +662,22 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 							"sortingConfig": {
 								"default": [
 									{
-										"direction": "desc",
-										"columnName": "UsrConcertDurationMinutes"
+										"direction": "asc",
+										"columnName": "UsrPerformanceNumber"
 									}
 								]
 							}
 						},
 						"viewModelConfig": {
 							"attributes": {
-								"GridDetail_3067jy8DS_UsrPerformanceName": {
-									"modelConfig": {
-										"path": "GridDetail_3067jy8DS.UsrPerformanceName"
-									}
-								},
 								"GridDetail_3067jy8DS_UsrPerformanceNumber": {
 									"modelConfig": {
 										"path": "GridDetail_3067jy8DS.UsrPerformanceNumber"
+									}
+								},
+								"GridDetail_3067jy8DS_UsrPerformanceName": {
+									"modelConfig": {
+										"path": "GridDetail_3067jy8DS.UsrPerformanceName"
 									}
 								},
 								"GridDetail_3067jy8DS_UsrConcertDurationMinutes": {
@@ -752,11 +752,11 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 						"config": {
 							"entitySchemaName": "UsrConcertPerformance",
 							"attributes": {
-								"UsrPerformanceName": {
-									"path": "UsrPerformanceName"
-								},
 								"UsrPerformanceNumber": {
 									"path": "UsrPerformanceNumber"
+								},
+								"UsrPerformanceName": {
+									"path": "UsrPerformanceName"
 								},
 								"UsrConcertDurationMinutes": {
 									"path": "UsrConcertDurationMinutes"
