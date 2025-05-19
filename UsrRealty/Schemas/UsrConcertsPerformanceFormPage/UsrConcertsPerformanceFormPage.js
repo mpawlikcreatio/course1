@@ -286,22 +286,18 @@ define("UsrConcertsPerformanceFormPage", /**SCHEMA_DEPS*/["@creatio-devkit/commo
 		      const context = request.$context;
 		      const sysSettingsService = new sdk.SysSettingsService();
 		
-		      // Pobierz wartość z ustawień systemowych
 		      const maxDurationSetting = await sysSettingsService.getByCode("UsrConcertPerformanceDuration");
 		      const maxAllowedMinutes = maxDurationSetting?.value ?? 0;
 		
-		      // Aktualna wartość w formularzu (czas trwania performance'u)
 		      const currentDuration = context.attributes["UsrConcertPerformanceDS_UsrConcertDurationMinutes_4b2wlre"] ?? 0;
 		
-		      // ID koncertu nadrzędnego
 		      const concertId = context.attributes["UsrConcertPerformanceDS_UsrParentConcert_vgra39f"]?.value;
 		
 		      if (!concertId) {
-		        console.warn("⚠️ Brak ID koncertu, pomijam walidację czasu.");
-		        return next?.handle(request);
+		        console.warn("No concert id. Changes can not be saved.");
+		        return;
 		      }
 		
-		      // Użycie Model + agregacja SUM (bez potrzeby pobierania wszystkich rekordów)
 		      const performanceModel = await sdk.Model.create("UsrConcertPerformance");
 		
 		      const filters = new sdk.FilterGroup();
@@ -333,12 +329,10 @@ define("UsrConcertsPerformanceFormPage", /**SCHEMA_DEPS*/["@creatio-devkit/commo
 		      const totalAfterSave = totalExistingDuration + currentDuration;
 		
 		      if (totalAfterSave > maxAllowedMinutes) {
-		        console.warn(`⛔ Limit czasu przekroczony: ${totalAfterSave} > ${maxAllowedMinutes}`);
-		        // Blokuj zapis
+		        console.warn(`Limit exceeded: ${totalAfterSave} > ${maxAllowedMinutes}`);
 		        return;
 		      }
 		
-		      // Zapisz rekord
 		      return next?.handle(request);
 		    }
 		  }
