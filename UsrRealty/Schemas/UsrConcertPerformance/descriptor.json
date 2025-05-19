@@ -2,7 +2,7 @@
   "Descriptor": {
     "UId": "4e3eb0cc-e86d-4ff9-a462-3db358aa747d",
     "Name": "UsrConcertPerformance",
-    "ModifiedOnUtc": "\/Date(1747403119000)\/",
+    "ModifiedOnUtc": "\/Date(1747644027000)\/",
     "Parent": {
       "UId": "1bab9dcf-17d5-49f8-9536-8e0064f1dce0",
       "Name": "BaseEntity"

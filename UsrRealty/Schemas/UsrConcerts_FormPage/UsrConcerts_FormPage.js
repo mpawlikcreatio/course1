@@ -192,6 +192,23 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 			},
 			{
 				"operation": "insert",
+				"name": "NumberInput_29bucda",
+				"values": {
+					"type": "crt.NumberInput",
+					"label": "$Resources.Strings.PDS_UsrPerDuration_rhmoxav",
+					"labelPosition": "auto",
+					"control": "$PDS_UsrPerDuration_rhmoxav",
+					"visible": true,
+					"readonly": true,
+					"placeholder": "",
+					"tooltip": ""
+				},
+				"parentName": "SideContainer",
+				"propertyName": "items",
+				"index": 5
+			},
+			{
+				"operation": "insert",
 				"name": "ExpansionPanel_2u5i8o7",
 				"values": {
 					"type": "crt.ExpansionPanel",
@@ -439,6 +456,11 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 								"enable": true,
 								"multiple": true
 							}
+						},
+						"editable": {
+							"enable": false,
+							"floatingEditPanel": false,
+							"itemsCreation": false
 						}
 					},
 					"items": "$GridDetail_3067jy8",
@@ -475,7 +497,9 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 						}
 					],
 					"placeholder": false,
-					"bulkActions": []
+					"bulkActions": [],
+					"visible": true,
+					"fitContent": true
 				},
 				"parentName": "GridContainer_ub32j5j",
 				"propertyName": "items",
@@ -604,8 +628,8 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 							"sortingConfig": {
 								"default": [
 									{
-										"direction": "asc",
-										"columnName": "UsrPerformanceName"
+										"direction": "desc",
+										"columnName": "UsrConcertDurationMinutes"
 									}
 								]
 							}
@@ -638,6 +662,11 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 									}
 								}
 							}
+						}
+					},
+					"PDS_UsrPerDuration_rhmoxav": {
+						"modelConfig": {
+							"path": "PDS.UsrPerDuration"
 						}
 					}
 				}

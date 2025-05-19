@@ -7,6 +7,7 @@
 			<Item Name="Columns.UsrConcertType.Caption" Value="Concert Type" />
 			<Item Name="Columns.UsrNotes.Caption" Value="Notes" />
 			<Item Name="Columns.UsrOwner.Caption" Value="Owner" />
+			<Item Name="Columns.UsrPerDuration.Caption" Value="Total Concert Performance Duration" />
 			<Item Name="Columns.UsrTitle.Caption" Value="Title" />
 		</Items>
 	</Group>

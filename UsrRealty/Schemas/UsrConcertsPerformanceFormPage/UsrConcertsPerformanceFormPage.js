@@ -1,4 +1,4 @@
-define("UsrConcertsPerformanceFormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHEMA_ARGS*/()/**SCHEMA_ARGS*/ {
+define("UsrConcertsPerformanceFormPage", /**SCHEMA_DEPS*/["@creatio-devkit/common"]/**SCHEMA_DEPS*/, function/**SCHEMA_ARGS*/(sdk)/**SCHEMA_ARGS*/ {
 	return {
 		viewConfigDiff: /**SCHEMA_VIEW_CONFIG_DIFF*/[
 			{
@@ -32,7 +32,7 @@ define("UsrConcertsPerformanceFormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, fun
 				"name": "CancelButton",
 				"parentName": "Main",
 				"propertyName": "items",
-				"index": 2
+				"index": 4
 			},
 			{
 				"operation": "merge",
@@ -48,7 +48,7 @@ define("UsrConcertsPerformanceFormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, fun
 				"name": "SaveButton",
 				"parentName": "Main",
 				"propertyName": "items",
-				"index": 3
+				"index": 5
 			},
 			{
 				"operation": "insert",
@@ -122,6 +122,60 @@ define("UsrConcertsPerformanceFormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, fun
 				"parentName": "FooterContainer",
 				"propertyName": "items",
 				"index": 3
+			},
+			{
+				"operation": "insert",
+				"name": "ComboBox_4p4qm54",
+				"values": {
+					"type": "crt.ComboBox",
+					"label": "$Resources.Strings.UsrConcertPerformanceDS_UsrParentConcert_vgra39f",
+					"labelPosition": "above",
+					"control": "$UsrConcertPerformanceDS_UsrParentConcert_vgra39f",
+					"listActions": [],
+					"showValueAsLink": true,
+					"controlActions": [],
+					"visible": false,
+					"readonly": false,
+					"placeholder": "",
+					"tooltip": ""
+				},
+				"parentName": "Main",
+				"propertyName": "items",
+				"index": 2
+			},
+			{
+				"operation": "insert",
+				"name": "addRecord_qej1jlq",
+				"values": {
+					"code": "addRecord",
+					"type": "crt.ComboboxSearchTextAction",
+					"icon": "combobox-add-new",
+					"caption": "#ResourceString(addRecord_qej1jlq_caption)#",
+					"clicked": {
+						"request": "crt.CreateRecordFromLookupRequest",
+						"params": {}
+					}
+				},
+				"parentName": "ComboBox_4p4qm54",
+				"propertyName": "listActions",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "NumberInput_c5b3lnt",
+				"values": {
+					"type": "crt.NumberInput",
+					"label": "$Resources.Strings.UsrConcertsDS_UsrPerDuration_0zb8jur",
+					"labelPosition": "above",
+					"control": "$UsrConcertsDS_UsrPerDuration_0zb8jur",
+					"visible": false,
+					"readonly": false,
+					"placeholder": "",
+					"tooltip": ""
+				},
+				"parentName": "Main",
+				"propertyName": "items",
+				"index": 3
 			}
 		]/**SCHEMA_VIEW_CONFIG_DIFF*/,
 		viewModelConfigDiff: /**SCHEMA_VIEW_MODEL_CONFIG_DIFF*/[
@@ -150,6 +204,16 @@ define("UsrConcertsPerformanceFormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, fun
 						"modelConfig": {
 							"path": "UsrConcertPerformanceDS.UsrConcertPerformanceType"
 						}
+					},
+					"UsrConcertPerformanceDS_UsrParentConcert_vgra39f": {
+						"modelConfig": {
+							"path": "UsrConcertPerformanceDS.UsrParentConcert"
+						}
+					},
+					"UsrConcertsDS_UsrPerDuration_0zb8jur": {
+						"modelConfig": {
+							"path": "UsrConcertsDS.UsrPerDuration"
+						}
 					}
 				}
 			}
@@ -175,13 +239,110 @@ define("UsrConcertsPerformanceFormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, fun
 								},
 								"allowCopyingRecords": false
 							}
+						},
+						"UsrConcertsDS": {
+							"type": "crt.EntityDataSource",
+							"scope": "page",
+							"config": {
+								"entitySchemaName": "UsrConcerts",
+								"loadParameters": {
+									"options": {
+										"pagingConfig": {
+											"rowCount": 1,
+											"rowsOffset": -1
+										},
+										"sortingConfig": {
+											"columns": []
+										}
+									},
+									"parameters": [
+										{
+											"type": "filter",
+											"value": null
+										}
+									]
+								},
+								"allowCopyingRecords": false
+							}
 						}
 					},
-					"primaryDataSourceName": "UsrConcertPerformanceDS"
+					"primaryDataSourceName": "UsrConcertPerformanceDS",
+					"loadingConfig": {},
+					"dependencies": {
+						"UsrConcertsDS": [
+							{
+								"attributePath": "Id",
+								"relationPath": "UsrConcertPerformanceDS.UsrParentConcert"
+							}
+						]
+					}
 				}
 			}
 		]/**SCHEMA_MODEL_CONFIG_DIFF*/,
-		handlers: /**SCHEMA_HANDLERS*/[]/**SCHEMA_HANDLERS*/,
+		handlers: [
+		  {
+		    request: "crt.SaveRecordRequest",
+		    handler: async (request, next) => {
+		      const context = request.$context;
+		      const sysSettingsService = new sdk.SysSettingsService();
+		
+		      // Pobierz wartość z ustawień systemowych
+		      const maxDurationSetting = await sysSettingsService.getByCode("UsrConcertPerformanceDuration");
+		      const maxAllowedMinutes = maxDurationSetting?.value ?? 0;
+		
+		      // Aktualna wartość w formularzu (czas trwania performance'u)
+		      const currentDuration = context.attributes["UsrConcertPerformanceDS_UsrConcertDurationMinutes_4b2wlre"] ?? 0;
+		
+		      // ID koncertu nadrzędnego
+		      const concertId = context.attributes["UsrConcertPerformanceDS_UsrParentConcert_vgra39f"]?.value;
+		
+		      if (!concertId) {
+		        console.warn("⚠️ Brak ID koncertu, pomijam walidację czasu.");
+		        return next?.handle(request);
+		      }
+		
+		      // Użycie Model + agregacja SUM (bez potrzeby pobierania wszystkich rekordów)
+		      const performanceModel = await sdk.Model.create("UsrConcertPerformance");
+		
+		      const filters = new sdk.FilterGroup();
+		      await filters.addSchemaColumnFilterWithParameter(
+		        sdk.ComparisonType.Equal,
+		        "UsrParentConcert",
+		        concertId
+		      );
+		
+		      const result = await performanceModel.load({
+		        attributes: [{
+		          type: "function",
+		          path: "UsrConcertDurationMinutes",
+		          name: "Duration",
+		          dataValueType: sdk.DataValueType.Integer,
+		          functionConfig: {
+		            aggregation: sdk.AggregationFunction.Sum,
+		            type: "aggregation",
+		            aggregationEval: sdk.AggregationEvalType.All
+		          }
+		        }],
+		        parameters: [{
+		          type: sdk.ModelParameterType.Filter,
+		          value: filters
+		        }]
+		      });
+		
+		      const totalExistingDuration = result[0]?.Duration ?? 0;
+		      const totalAfterSave = totalExistingDuration + currentDuration;
+		
+		      if (totalAfterSave > maxAllowedMinutes) {
+		        console.warn(`⛔ Limit czasu przekroczony: ${totalAfterSave} > ${maxAllowedMinutes}`);
+		        // Blokuj zapis
+		        return;
+		      }
+		
+		      // Zapisz rekord
+		      return next?.handle(request);
+		    }
+		  }
+		],
 		converters: /**SCHEMA_CONVERTERS*/{}/**SCHEMA_CONVERTERS*/,
 		validators: /**SCHEMA_VALIDATORS*/{}/**SCHEMA_VALIDATORS*/
 	};
