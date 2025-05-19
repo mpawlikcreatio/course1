@@ -1,6 +1,9 @@
 <Project>
 	<ItemGroup Label="Entity Files" Condition="'$(PkgPath)' != ''">
+		<Compile Include="$(PkgPath)/UsrRealty/Schemas/Usr/Usr.cs" Condition="Exists('$(PkgPath)/UsrRealty/Schemas/Usr/Usr.cs')" />
+		<Compile Include="$(PkgPath)/UsrRealty/Schemas/UsrConcertPerformance/UsrConcertPerformance.cs" Condition="Exists('$(PkgPath)/UsrRealty/Schemas/UsrConcertPerformance/UsrConcertPerformance.cs')" />
 		<Compile Include="$(PkgPath)/UsrRealty/Schemas/UsrConcerts/UsrConcerts.cs" Condition="Exists('$(PkgPath)/UsrRealty/Schemas/UsrConcerts/UsrConcerts.cs')" />
+		<Compile Include="$(PkgPath)/UsrRealty/Schemas/UsrPerformanceTypes/UsrPerformanceTypes.cs" Condition="Exists('$(PkgPath)/UsrRealty/Schemas/UsrPerformanceTypes/UsrPerformanceTypes.cs')" />
 		<Compile Include="$(PkgPath)/UsrRealty/Schemas/UsrTestField/UsrTestField.cs" Condition="Exists('$(PkgPath)/UsrRealty/Schemas/UsrTestField/UsrTestField.cs')" />
 		<Compile Include="$(PkgPath)/UsrRealty/Schemas/UsrTestFirstField/UsrTestFirstField.cs" Condition="Exists('$(PkgPath)/UsrRealty/Schemas/UsrTestFirstField/UsrTestFirstField.cs')" />
 	</ItemGroup>

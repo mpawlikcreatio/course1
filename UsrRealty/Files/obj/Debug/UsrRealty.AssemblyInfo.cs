@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UsrRealty")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.0.0.0+79ca01f67686e781c8e555474ef063ad6fe3612a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.0.0.0+b7f902715c0ecc1d2100f74d998a64a174daa595")]
 [assembly: System.Reflection.AssemblyProductAttribute("UsrRealty")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UsrRealty")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.0.0.0")]

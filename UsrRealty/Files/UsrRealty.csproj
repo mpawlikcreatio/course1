@@ -329,7 +329,10 @@
 	</ItemGroup>
 	<ItemGroup Label="Standalone package external assembly references" />
 	<ItemGroup Label="Entity Files">
+		<Compile Remove="$(RelativePkgFolderPath)/UsrRealty/Schemas/Usr/Usr.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrRealty/Schemas/Usr/Usr.cs')" />
+		<Compile Remove="$(RelativePkgFolderPath)/UsrRealty/Schemas/UsrConcertPerformance/UsrConcertPerformance.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrRealty/Schemas/UsrConcertPerformance/UsrConcertPerformance.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/UsrRealty/Schemas/UsrConcerts/UsrConcerts.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrRealty/Schemas/UsrConcerts/UsrConcerts.cs')" />
+		<Compile Remove="$(RelativePkgFolderPath)/UsrRealty/Schemas/UsrPerformanceTypes/UsrPerformanceTypes.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrRealty/Schemas/UsrPerformanceTypes/UsrPerformanceTypes.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/UsrRealty/Schemas/UsrTestField/UsrTestField.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrRealty/Schemas/UsrTestField/UsrTestField.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/UsrRealty/Schemas/UsrTestFirstField/UsrTestFirstField.cs" Condition="Exists('$(RelativePkgFolderPath)/UsrRealty/Schemas/UsrTestFirstField/UsrTestFirstField.cs')" />
 	</ItemGroup>
