@@ -270,64 +270,96 @@ define("UsrConcertsPerformanceFormPage", /**SCHEMA_DEPS*/["@creatio-devkit/commo
 				}
 			}
 		]/**SCHEMA_MODEL_CONFIG_DIFF*/,
-	handlers: [
-	  {
-	    request: "crt.SaveRecordRequest",
-	    handler: async (request, next) => {
-	      const context = request.$context;
-	      const sysSettingsService = new sdk.SysSettingsService();
-	
-	      const maxDurationSetting = await sysSettingsService.getByCode("UsrConcertPerformanceDuration");
-	      const maxAllowedMinutes = maxDurationSetting?.value ?? 0;
-	
-	      const currentDuration = context.attributes["UsrConcertPerformanceDS_UsrConcertDurationMinutes_4b2wlre"] ?? 0;
-	
-	      const concertId = context.attributes["UsrConcertPerformanceDS_UsrParentConcert_vgra39f"]?.value;
-	
-	      if (!concertId) {
-			alert("Concert id is not set correctly.");
-	        return;
-	      }
-	
-	      const performanceModel = await sdk.Model.create("UsrConcertPerformance");
-	
-	      const filters = new sdk.FilterGroup();
-	      await filters.addSchemaColumnFilterWithParameter(
-	        sdk.ComparisonType.Equal,
-	        "UsrParentConcert",
-	        concertId
-	      );
-	
-	      const result = await performanceModel.load({
-	        attributes: [{
-	          type: "function",
-	          path: "UsrConcertDurationMinutes",
-	          name: "Duration",
-	          dataValueType: sdk.DataValueType.Integer,
-	          functionConfig: {
-	            aggregation: sdk.AggregationFunction.Sum,
-	            type: "aggregation",
-	            aggregationEval: sdk.AggregationEvalType.All
-	          }
-	        }],
-	        parameters: [{
-	          type: sdk.ModelParameterType.Filter,
-	          value: filters
-	        }]
-	      });
-	
-	      const totalExistingDuration = result[0]?.Duration ?? 0;
-	      const totalAfterSave = totalExistingDuration + currentDuration;
-	
-	      if (totalAfterSave > maxAllowedMinutes) {
-			alert(`Time limit was exceeded for perforamnce duration: ${totalAfterSave} > ${maxAllowedMinutes}`);
-	        return;
-	      }
-	
-	      return next?.handle(request);
-	    }
-	  }
-	],
+		handlers: /**SCHEMA_HANDLERS*/[ {
+  request: "crt.SaveRecordRequest",
+  handler: async (request, next) => {
+    const context = request.$context;
+    const sysSettingsService = new sdk.SysSettingsService();
+
+    const maxDurationSetting = await sysSettingsService.getByCode("UsrConcertPerformanceDuration");
+    const maxAllowedMinutes = maxDurationSetting?.value ?? 0;
+
+    const currentDuration = context.attributes["UsrConcertPerformanceDS_UsrConcertDurationMinutes_4b2wlre"] ?? 0;
+    const concertId = context.attributes["UsrConcertPerformanceDS_UsrParentConcert_vgra39f"]?.value;
+
+    if (!concertId) {
+      const handlerChain = sdk.HandlerChainService.instance;
+      await handlerChain.process({
+        type: "crt.ShowDialogRequest",
+        $context: context,
+        dialogConfig: {
+          data: {
+            title: "Validation error",
+            message: "Concert ID is not set.",
+            actions: [{
+              key: "OK",
+              config: {
+                caption: "OK",
+                color: "primary"
+              }
+            }]
+          }
+        }
+      });
+      return;
+    }
+
+    const performanceModel = await sdk.Model.create("UsrConcertPerformance");
+
+    const filters = new sdk.FilterGroup();
+    await filters.addSchemaColumnFilterWithParameter(
+      sdk.ComparisonType.Equal,
+      "UsrParentConcert",
+      concertId
+    );
+
+    const result = await performanceModel.load({
+      attributes: [{
+        type: "function",
+        path: "UsrConcertDurationMinutes",
+        name: "Duration",
+        dataValueType: sdk.DataValueType.Integer,
+        functionConfig: {
+          aggregation: sdk.AggregationFunction.Sum,
+          type: "aggregation",
+          aggregationEval: sdk.AggregationEvalType.All
+        }
+      }],
+      parameters: [{
+        type: sdk.ModelParameterType.Filter,
+        value: filters
+      }]
+    });
+
+    const totalExistingDuration = result[0]?.Duration ?? 0;
+    const totalAfterSave = totalExistingDuration + currentDuration;
+
+    if (totalAfterSave > maxAllowedMinutes) {
+      const handlerChain = sdk.HandlerChainService.instance;
+      await handlerChain.process({
+        type: "crt.ShowDialogRequest",
+        $context: context,
+        dialogConfig: {
+          data: {
+            title: "Duration limit exceeded",
+            message: `Total duration ${totalAfterSave} exceeds allowed limit ${maxAllowedMinutes}.`,
+            actions: [{
+              key: "OK",
+              config: {
+                caption: "OK",
+                color: "primary"
+              }
+            }]
+          }
+        }
+      });
+      return;
+    }
+
+    return next?.handle(request);
+  }
+}
+]/**SCHEMA_HANDLERS*/,
 		converters: /**SCHEMA_CONVERTERS*/{}/**SCHEMA_CONVERTERS*/,
 		validators: /**SCHEMA_VALIDATORS*/{}/**SCHEMA_VALIDATORS*/
 	};

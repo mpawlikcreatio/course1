@@ -27,7 +27,8 @@
   "A3": "4e3eb0cc-e86d-4ff9-a462-3db358aa747d",
   "A4": "4e3eb0cc-e86d-4ff9-a462-3db358aa747d",
   "A5": "220abe15-2ee2-4352-8fcf-dc8af1285501",
-  "S2": "6b6b74e2-820d-490e-a017-2b73d4ccf2b0"
+  "S2": "6b6b74e2-820d-490e-a017-2b73d4ccf2b0",
+  "E2": 1
 }
 + MetaData.Schema.D2 {
   "UId": "c75c61d3-d56f-d164-92b4-f2fd4e771f46",
@@ -35,7 +36,8 @@
   "A3": "4e3eb0cc-e86d-4ff9-a462-3db358aa747d",
   "A4": "4e3eb0cc-e86d-4ff9-a462-3db358aa747d",
   "A5": "220abe15-2ee2-4352-8fcf-dc8af1285501",
-  "S2": "6b6b74e2-820d-490e-a017-2b73d4ccf2b0"
+  "S2": "6b6b74e2-820d-490e-a017-2b73d4ccf2b0",
+  "E2": 1
 }
 + MetaData.Schema.D2 {
   "UId": "51c3349a-5b14-100a-c67f-7a44cca71755",
@@ -43,7 +45,8 @@
   "A3": "4e3eb0cc-e86d-4ff9-a462-3db358aa747d",
   "A4": "4e3eb0cc-e86d-4ff9-a462-3db358aa747d",
   "A5": "220abe15-2ee2-4352-8fcf-dc8af1285501",
-  "S2": "ddb3a1ee-07e8-4d62-b7a9-d0e618b00fbd"
+  "S2": "ddb3a1ee-07e8-4d62-b7a9-d0e618b00fbd",
+  "E2": 1
 }
 + MetaData.Schema.D2 {
   "UId": "dc924e17-63aa-47ca-efa0-f49b1eb02048",
@@ -67,6 +70,7 @@
   "A5": "220abe15-2ee2-4352-8fcf-dc8af1285501",
   "S2": "b295071f-7ea9-4e62-8d1a-919bf3732ff2",
   "S4": "24c8200b-b36e-4853-80fc-ca20934b19d5",
+  "E2": 1,
   "E6": true,
   "E20": true,
   "E17": "UsrConcertPerformanceTypeId",
