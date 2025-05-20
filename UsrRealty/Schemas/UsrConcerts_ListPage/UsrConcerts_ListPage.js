@@ -26,12 +26,6 @@ define("UsrConcerts_ListPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 				"values": {
 					"columns": [
 						{
-							"id": "66cad5fa-2df5-6e7a-c862-198ee606ed0d",
-							"code": "PDS_UsrConcertCode",
-							"caption": "#ResourceString(PDS_UsrConcertCode)#",
-							"dataValueType": 28
-						},
-						{
 							"id": "0d42ef60-8f33-4986-310a-7a2b977a621b",
 							"code": "PDS_UsrTitle",
 							"caption": "#ResourceString(PDS_UsrTitle)#",
@@ -86,11 +80,6 @@ define("UsrConcerts_ListPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 					"attributes"
 				],
 				"values": {
-					"PDS_UsrConcertCode": {
-						"modelConfig": {
-							"path": "PDS.UsrConcertCode"
-						}
-					},
 					"PDS_UsrTitle": {
 						"modelConfig": {
 							"path": "PDS.UsrTitle"
@@ -124,8 +113,8 @@ define("UsrConcerts_ListPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 				"values": {
 					"default": [
 						{
-							"direction": "asc",
-							"columnName": "UsrColumn7"
+							"direction": "desc",
+							"columnName": "UsrConcertCode"
 						}
 					]
 				}
@@ -142,9 +131,6 @@ define("UsrConcerts_ListPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 				"values": {
 					"entitySchemaName": "UsrConcerts",
 					"attributes": {
-						"UsrConcertCode": {
-							"path": "UsrConcertCode"
-						},
 						"UsrTitle": {
 							"path": "UsrTitle"
 						},
