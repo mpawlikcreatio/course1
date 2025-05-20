@@ -5,7 +5,7 @@
 			<Item Name="Caption" Value="Concerts form page" />
 			<Item Name="LocalizableStrings.addRecord_ivkuopc_caption.Value" Value="Add new" />
 			<Item Name="LocalizableStrings.addRecord_rwgr7vm_caption.Value" Value="Add new" />
-			<Item Name="LocalizableStrings.Button_v8693uk_caption.Value" Value="Add performances" />
+			<Item Name="LocalizableStrings.Button_v8693uk_caption.Value" Value="Add 10 default performances" />
 			<Item Name="LocalizableStrings.ExpansionPanel_2u5i8o7_title.Value" Value="Concert Performance" />
 			<Item Name="LocalizableStrings.GeneralInfoTab_caption.Value" Value="Performances" />
 			<Item Name="LocalizableStrings.GridDetailAddBtn_492ti8o_caption.Value" Value="New" />

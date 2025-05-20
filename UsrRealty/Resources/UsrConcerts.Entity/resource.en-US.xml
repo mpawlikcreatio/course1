@@ -4,6 +4,7 @@
 		<Items>
 			<Item Name="Caption" Value="Concerts" />
 			<Item Name="Columns.UsrActive.Caption" Value="Active" />
+			<Item Name="Columns.UsrConcertCode.Caption" Value="Code" />
 			<Item Name="Columns.UsrConcertType.Caption" Value="Concert Type" />
 			<Item Name="Columns.UsrNotes.Caption" Value="Notes" />
 			<Item Name="Columns.UsrOwner.Caption" Value="Owner" />

@@ -8,6 +8,7 @@
       "Name": "BaseLookup"
     },
     "ManagerName": "EntitySchemaManager",
-    "Caption": "Test First Field"
+    "Caption": "Test First Field",
+    "DependsOn": []
   }
 }

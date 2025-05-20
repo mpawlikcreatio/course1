@@ -192,16 +192,13 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 			},
 			{
 				"operation": "insert",
-				"name": "NumberInput_29bucda",
+				"name": "Input_24rwjab",
 				"values": {
-					"type": "crt.NumberInput",
-					"label": "$Resources.Strings.PDS_UsrPerDuration_rhmoxav",
+					"type": "crt.Input",
+					"multiline": false,
+					"label": "$Resources.Strings.PDS_UsrConcertCode_brobris",
 					"labelPosition": "auto",
-					"control": "$PDS_UsrPerDuration_rhmoxav",
-					"visible": true,
-					"readonly": true,
-					"placeholder": "",
-					"tooltip": ""
+					"control": "$PDS_UsrConcertCode_brobris"
 				},
 				"parentName": "SideContainer",
 				"propertyName": "items",
@@ -698,9 +695,9 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 							}
 						}
 					},
-					"PDS_UsrPerDuration_rhmoxav": {
+					"PDS_UsrConcertCode_brobris": {
 						"modelConfig": {
-							"path": "PDS.UsrPerDuration"
+							"path": "PDS.UsrConcertCode"
 						}
 					}
 				}

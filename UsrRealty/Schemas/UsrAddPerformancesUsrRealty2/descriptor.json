@@ -1,0 +1,13 @@
+﻿{
+  "Descriptor": {
+    "UId": "3802c2f0-a259-4873-ad58-7377334ea617",
+    "Name": "UsrAddPerformancesUsrRealty2",
+    "ModifiedOnUtc": "\/Date(1747732220000)\/",
+    "Parent": {
+      "UId": "a4432b57-f54b-49b8-89c4-65b96a27a256",
+      "Name": "UsrAddPerformances"
+    },
+    "ManagerName": "ProcessSchemaManager",
+    "Caption": "Add Performances"
+  }
+}

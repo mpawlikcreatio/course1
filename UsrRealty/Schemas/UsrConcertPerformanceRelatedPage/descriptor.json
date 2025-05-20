@@ -4,6 +4,7 @@
     "Name": "UsrConcertPerformanceRelatedPage",
     "ModifiedOnUtc": "\/Date(1747401374000)\/",
     "ManagerName": "AddonSchemaManager",
-    "Caption": "Concert Performance (Page settings)"
+    "Caption": "Concert Performance (Page settings)",
+    "DependsOn": []
   }
 }

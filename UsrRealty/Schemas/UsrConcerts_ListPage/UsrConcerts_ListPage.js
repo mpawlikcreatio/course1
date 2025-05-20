@@ -26,10 +26,10 @@ define("UsrConcerts_ListPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 				"values": {
 					"columns": [
 						{
-							"id": "f252f581-0ccf-44ac-b7c9-c00df2ad9919",
-							"code": "PDS_UsrName",
-							"caption": "#ResourceString(PDS_UsrName)#",
-							"dataValueType": 1
+							"id": "66cad5fa-2df5-6e7a-c862-198ee606ed0d",
+							"code": "PDS_UsrConcertCode",
+							"caption": "#ResourceString(PDS_UsrConcertCode)#",
+							"dataValueType": 28
 						},
 						{
 							"id": "0d42ef60-8f33-4986-310a-7a2b977a621b",
@@ -50,16 +50,11 @@ define("UsrConcerts_ListPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 							"dataValueType": 10
 						},
 						{
-							"id": "70cdab27-cd53-1f1b-f7b4-859397eb9ad5",
-							"code": "PDS_UsrNotes",
-							"caption": "#ResourceString(PDS_UsrNotes)#",
-							"dataValueType": 30
-						},
-						{
 							"id": "b924131d-9730-52bc-5611-4af63c5b3f4f",
 							"code": "PDS_UsrActive",
 							"caption": "#ResourceString(PDS_UsrActive)#",
-							"dataValueType": 12
+							"dataValueType": 12,
+							"width": 128.99431610107422
 						}
 					]
 				}
@@ -91,9 +86,9 @@ define("UsrConcerts_ListPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 					"attributes"
 				],
 				"values": {
-					"PDS_UsrName": {
+					"PDS_UsrConcertCode": {
 						"modelConfig": {
-							"path": "PDS.UsrName"
+							"path": "PDS.UsrConcertCode"
 						}
 					},
 					"PDS_UsrTitle": {
@@ -109,11 +104,6 @@ define("UsrConcerts_ListPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 					"PDS_UsrOwner": {
 						"modelConfig": {
 							"path": "PDS.UsrOwner"
-						}
-					},
-					"PDS_UsrNotes": {
-						"modelConfig": {
-							"path": "PDS.UsrNotes"
 						}
 					},
 					"PDS_UsrActive": {
@@ -135,7 +125,7 @@ define("UsrConcerts_ListPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 					"default": [
 						{
 							"direction": "asc",
-							"columnName": "CreatedOn"
+							"columnName": "UsrColumn7"
 						}
 					]
 				}
@@ -152,8 +142,8 @@ define("UsrConcerts_ListPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 				"values": {
 					"entitySchemaName": "UsrConcerts",
 					"attributes": {
-						"UsrName": {
-							"path": "UsrName"
+						"UsrConcertCode": {
+							"path": "UsrConcertCode"
 						},
 						"UsrTitle": {
 							"path": "UsrTitle"
@@ -163,9 +153,6 @@ define("UsrConcerts_ListPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 						},
 						"UsrOwner": {
 							"path": "UsrOwner"
-						},
-						"UsrNotes": {
-							"path": "UsrNotes"
 						},
 						"UsrActive": {
 							"path": "UsrActive"

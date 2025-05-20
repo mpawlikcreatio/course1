@@ -2,12 +2,13 @@
   "Descriptor": {
     "UId": "2b3cf2d6-2ee1-486c-a882-573978e65082",
     "Name": "UsrTestField",
-    "ModifiedOnUtc": "\/Date(1747309786000)\/",
+    "ModifiedOnUtc": "\/Date(1747309787000)\/",
     "Parent": {
       "UId": "11ab4bcb-9b23-4b6d-9c86-520fae925d75",
       "Name": "BaseLookup"
     },
     "ManagerName": "EntitySchemaManager",
-    "Caption": "Test Field"
+    "Caption": "Test Field",
+    "DependsOn": []
   }
 }

@@ -4,6 +4,7 @@
     "Name": "UsrAddPerformances",
     "ModifiedOnUtc": "\/Date(1747663123000)\/",
     "ManagerName": "ProcessSchemaManager",
-    "Caption": "Add Performances"
+    "Caption": "Add Performances",
+    "DependsOn": []
   }
 }

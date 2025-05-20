@@ -8,6 +8,6 @@
     "IsTrackChangesInDB": "False",
     "IsVirtual": "False",
     "OptionalProperties": "{}",
-    "UseLiveEditing": "False"
+    "UseLiveEditing": "True"
   }
 }

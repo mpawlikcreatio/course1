@@ -1,0 +1,10 @@
+﻿{
+  "Descriptor": {
+    "UId": "c41a7ef1-ef77-479e-af02-66ab0ca7cac4",
+    "Name": "UsrConcertsRelatedPage",
+    "ModifiedOnUtc": "\/Date(1747312792000)\/",
+    "ManagerName": "AddonSchemaManager",
+    "Caption": "Concerts (Page settings)",
+    "DependsOn": []
+  }
+}
