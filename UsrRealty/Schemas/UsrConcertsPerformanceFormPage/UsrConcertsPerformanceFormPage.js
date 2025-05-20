@@ -30,9 +30,9 @@ define("UsrConcertsPerformanceFormPage", /**SCHEMA_DEPS*/["@creatio-devkit/commo
 			{
 				"operation": "move",
 				"name": "CancelButton",
-				"parentName": "Main",
+				"parentName": "FlexContainer_lzexpo1",
 				"propertyName": "items",
-				"index": 4
+				"index": 1
 			},
 			{
 				"operation": "merge",
@@ -46,9 +46,9 @@ define("UsrConcertsPerformanceFormPage", /**SCHEMA_DEPS*/["@creatio-devkit/commo
 			{
 				"operation": "move",
 				"name": "SaveButton",
-				"parentName": "Main",
+				"parentName": "FlexContainer_lzexpo1",
 				"propertyName": "items",
-				"index": 5
+				"index": 0
 			},
 			{
 				"operation": "insert",
@@ -162,16 +162,12 @@ define("UsrConcertsPerformanceFormPage", /**SCHEMA_DEPS*/["@creatio-devkit/commo
 			},
 			{
 				"operation": "insert",
-				"name": "NumberInput_c5b3lnt",
+				"name": "FlexContainer_lzexpo1",
 				"values": {
-					"type": "crt.NumberInput",
-					"label": "$Resources.Strings.UsrConcertsDS_UsrPerDuration_0zb8jur",
-					"labelPosition": "above",
-					"control": "$UsrConcertsDS_UsrPerDuration_0zb8jur",
-					"visible": false,
-					"readonly": false,
-					"placeholder": "",
-					"tooltip": ""
+					"type": "crt.FlexContainer",
+					"direction": "row",
+					"items": [],
+					"fitContent": true
 				},
 				"parentName": "Main",
 				"propertyName": "items",
@@ -208,11 +204,6 @@ define("UsrConcertsPerformanceFormPage", /**SCHEMA_DEPS*/["@creatio-devkit/commo
 					"UsrConcertPerformanceDS_UsrParentConcert_vgra39f": {
 						"modelConfig": {
 							"path": "UsrConcertPerformanceDS.UsrParentConcert"
-						}
-					},
-					"UsrConcertsDS_UsrPerDuration_0zb8jur": {
-						"modelConfig": {
-							"path": "UsrConcertsDS.UsrPerDuration"
 						}
 					}
 				}
@@ -279,64 +270,64 @@ define("UsrConcertsPerformanceFormPage", /**SCHEMA_DEPS*/["@creatio-devkit/commo
 				}
 			}
 		]/**SCHEMA_MODEL_CONFIG_DIFF*/,
-		handlers: [
-		  {
-		    request: "crt.SaveRecordRequest",
-		    handler: async (request, next) => {
-		      const context = request.$context;
-		      const sysSettingsService = new sdk.SysSettingsService();
-		
-		      const maxDurationSetting = await sysSettingsService.getByCode("UsrConcertPerformanceDuration");
-		      const maxAllowedMinutes = maxDurationSetting?.value ?? 0;
-		
-		      const currentDuration = context.attributes["UsrConcertPerformanceDS_UsrConcertDurationMinutes_4b2wlre"] ?? 0;
-		
-		      const concertId = context.attributes["UsrConcertPerformanceDS_UsrParentConcert_vgra39f"]?.value;
-		
-		      if (!concertId) {
-		        console.warn("No concert id. Changes can not be saved.");
-		        return;
-		      }
-		
-		      const performanceModel = await sdk.Model.create("UsrConcertPerformance");
-		
-		      const filters = new sdk.FilterGroup();
-		      await filters.addSchemaColumnFilterWithParameter(
-		        sdk.ComparisonType.Equal,
-		        "UsrParentConcert",
-		        concertId
-		      );
-		
-		      const result = await performanceModel.load({
-		        attributes: [{
-		          type: "function",
-		          path: "UsrConcertDurationMinutes",
-		          name: "Duration",
-		          dataValueType: sdk.DataValueType.Integer,
-		          functionConfig: {
-		            aggregation: sdk.AggregationFunction.Sum,
-		            type: "aggregation",
-		            aggregationEval: sdk.AggregationEvalType.All
-		          }
-		        }],
-		        parameters: [{
-		          type: sdk.ModelParameterType.Filter,
-		          value: filters
-		        }]
-		      });
-		
-		      const totalExistingDuration = result[0]?.Duration ?? 0;
-		      const totalAfterSave = totalExistingDuration + currentDuration;
-		
-		      if (totalAfterSave > maxAllowedMinutes) {
-		        console.warn(`Limit exceeded: ${totalAfterSave} > ${maxAllowedMinutes}`);
-		        return;
-		      }
-		
-		      return next?.handle(request);
-		    }
-		  }
-		],
+	handlers: [
+	  {
+	    request: "crt.SaveRecordRequest",
+	    handler: async (request, next) => {
+	      const context = request.$context;
+	      const sysSettingsService = new sdk.SysSettingsService();
+	
+	      const maxDurationSetting = await sysSettingsService.getByCode("UsrConcertPerformanceDuration");
+	      const maxAllowedMinutes = maxDurationSetting?.value ?? 0;
+	
+	      const currentDuration = context.attributes["UsrConcertPerformanceDS_UsrConcertDurationMinutes_4b2wlre"] ?? 0;
+	
+	      const concertId = context.attributes["UsrConcertPerformanceDS_UsrParentConcert_vgra39f"]?.value;
+	
+	      if (!concertId) {
+			alert("Concert id is not set correctly.");
+	        return;
+	      }
+	
+	      const performanceModel = await sdk.Model.create("UsrConcertPerformance");
+	
+	      const filters = new sdk.FilterGroup();
+	      await filters.addSchemaColumnFilterWithParameter(
+	        sdk.ComparisonType.Equal,
+	        "UsrParentConcert",
+	        concertId
+	      );
+	
+	      const result = await performanceModel.load({
+	        attributes: [{
+	          type: "function",
+	          path: "UsrConcertDurationMinutes",
+	          name: "Duration",
+	          dataValueType: sdk.DataValueType.Integer,
+	          functionConfig: {
+	            aggregation: sdk.AggregationFunction.Sum,
+	            type: "aggregation",
+	            aggregationEval: sdk.AggregationEvalType.All
+	          }
+	        }],
+	        parameters: [{
+	          type: sdk.ModelParameterType.Filter,
+	          value: filters
+	        }]
+	      });
+	
+	      const totalExistingDuration = result[0]?.Duration ?? 0;
+	      const totalAfterSave = totalExistingDuration + currentDuration;
+	
+	      if (totalAfterSave > maxAllowedMinutes) {
+			alert(`Time limit was exceeded for perforamnce duration: ${totalAfterSave} > ${maxAllowedMinutes}`);
+	        return;
+	      }
+	
+	      return next?.handle(request);
+	    }
+	  }
+	],
 		converters: /**SCHEMA_CONVERTERS*/{}/**SCHEMA_CONVERTERS*/,
 		validators: /**SCHEMA_VALIDATORS*/{}/**SCHEMA_VALIDATORS*/
 	};

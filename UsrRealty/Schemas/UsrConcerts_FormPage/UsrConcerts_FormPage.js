@@ -80,8 +80,12 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 					"type": "crt.Input",
 					"label": "$Resources.Strings.UsrName",
 					"control": "$UsrName",
-					"labelPosition": "auto",
-					"multiline": false
+					"labelPosition": "above",
+					"multiline": false,
+					"visible": true,
+					"readonly": false,
+					"placeholder": "",
+					"tooltip": ""
 				},
 				"parentName": "SideAreaProfileContainer",
 				"propertyName": "items",
@@ -89,24 +93,11 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 			},
 			{
 				"operation": "insert",
-				"name": "concerts_active",
-				"values": {
-					"type": "crt.Checkbox",
-					"label": "$Resources.Strings.PDS_UsrActive_jzvjhfe",
-					"labelPosition": "auto",
-					"control": "$PDS_UsrActive_jzvjhfe"
-				},
-				"parentName": "SideContainer",
-				"propertyName": "items",
-				"index": 1
-			},
-			{
-				"operation": "insert",
 				"name": "concerts_concerttype",
 				"values": {
 					"type": "crt.ComboBox",
 					"label": "$Resources.Strings.PDS_UsrConcertType_u0ek50g",
-					"labelPosition": "auto",
+					"labelPosition": "above",
 					"control": "$PDS_UsrConcertType_u0ek50g",
 					"listActions": [],
 					"showValueAsLink": true,
@@ -115,11 +106,17 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 					"readonly": false,
 					"placeholder": "",
 					"tooltip": "",
-					"valueDetails": null
+					"valueDetails": null,
+					"layoutConfig": {
+						"column": 1,
+						"colSpan": 1,
+						"row": 2,
+						"rowSpan": 1
+					}
 				},
-				"parentName": "SideContainer",
+				"parentName": "SideAreaProfileContainer",
 				"propertyName": "items",
-				"index": 2
+				"index": 1
 			},
 			{
 				"operation": "insert",
@@ -144,13 +141,23 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 				"values": {
 					"type": "crt.Input",
 					"label": "$Resources.Strings.PDS_UsrNotes_sy8nydg",
-					"labelPosition": "auto",
+					"labelPosition": "above",
 					"control": "$PDS_UsrNotes_sy8nydg",
-					"multiline": false
+					"multiline": false,
+					"visible": true,
+					"readonly": false,
+					"placeholder": "",
+					"tooltip": "",
+					"layoutConfig": {
+						"column": 1,
+						"colSpan": 1,
+						"row": 3,
+						"rowSpan": 1
+					}
 				},
-				"parentName": "SideContainer",
+				"parentName": "SideAreaProfileContainer",
 				"propertyName": "items",
-				"index": 3
+				"index": 2
 			},
 			{
 				"operation": "insert",
@@ -158,7 +165,7 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 				"values": {
 					"type": "crt.ComboBox",
 					"label": "$Resources.Strings.PDS_UsrOwner_gniaqdy",
-					"labelPosition": "auto",
+					"labelPosition": "above",
 					"control": "$PDS_UsrOwner_gniaqdy",
 					"listActions": [],
 					"showValueAsLink": true,
@@ -167,11 +174,17 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 					"readonly": false,
 					"placeholder": "",
 					"tooltip": "",
-					"valueDetails": null
+					"valueDetails": null,
+					"layoutConfig": {
+						"column": 1,
+						"colSpan": 1,
+						"row": 4,
+						"rowSpan": 1
+					}
 				},
-				"parentName": "SideContainer",
+				"parentName": "SideAreaProfileContainer",
 				"propertyName": "items",
-				"index": 4
+				"index": 3
 			},
 			{
 				"operation": "insert",
@@ -197,10 +210,43 @@ define("UsrConcerts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SC
 					"type": "crt.Input",
 					"multiline": false,
 					"label": "$Resources.Strings.PDS_UsrConcertCode_brobris",
-					"labelPosition": "auto",
-					"control": "$PDS_UsrConcertCode_brobris"
+					"labelPosition": "above",
+					"control": "$PDS_UsrConcertCode_brobris",
+					"visible": true,
+					"readonly": false,
+					"placeholder": "",
+					"tooltip": "",
+					"layoutConfig": {
+						"column": 1,
+						"colSpan": 1,
+						"row": 5,
+						"rowSpan": 1
+					}
 				},
-				"parentName": "SideContainer",
+				"parentName": "SideAreaProfileContainer",
+				"propertyName": "items",
+				"index": 4
+			},
+			{
+				"operation": "insert",
+				"name": "concerts_active",
+				"values": {
+					"type": "crt.Checkbox",
+					"label": "$Resources.Strings.PDS_UsrActive_jzvjhfe",
+					"labelPosition": "above",
+					"control": "$PDS_UsrActive_jzvjhfe",
+					"visible": true,
+					"readonly": false,
+					"placeholder": "",
+					"tooltip": "",
+					"layoutConfig": {
+						"column": 1,
+						"colSpan": 1,
+						"row": 6,
+						"rowSpan": 1
+					}
+				},
+				"parentName": "SideAreaProfileContainer",
 				"propertyName": "items",
 				"index": 5
 			},
